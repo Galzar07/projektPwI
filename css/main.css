@@ -1,0 +1,301 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  position: relative;
+}
+
+/* header */
+/* header {
+
+  box-sizing: border-box;
+} */
+
+.log {
+  text-align: center;
+  font-size: 50px;
+  font-family: "Trade Winds", cursive;
+}
+
+.fab {
+  color: rgb(225, 48, 108);
+}
+
+/* section */
+main {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+
+}
+
+.containerM {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#img {
+  background-image: url("../jpg/ekranMain.png");
+  background-repeat: no-repeat;
+  width: 454px;
+  height: 618px;
+  margin: auto 0;
+}
+
+#img .slider {
+  margin: 99px 0 0 151px;
+  position: relative;
+  transition: 0.3s transform ease-in-out;
+}
+
+#img .slider img {
+  margin: auto;
+}
+
+#loginMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto 0;
+}
+
+#loginMenu ul {
+  list-style: none;
+}
+
+#loginMenu ul li {
+  margin: 10px;
+  padding: 10px;
+}
+
+form {
+  width: 360px;
+
+}
+
+.loginContent {
+  display: none;
+
+}
+
+.loginContent h2 {
+  margin: 15px 0;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 2.9rem;
+}
+
+.loginContent .input-div {
+  position: relative;
+  display: grid;
+  grid-template-columns: 7% 93%;
+  margin: 25px 0;
+  padding: 5px 0;
+  border-bottom: 2px solid #d9d9d9;
+}
+
+.loginContent .input-div.one {
+  margin-top: 0;
+}
+
+.i {
+  color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.i i {
+  transition: .3s;
+}
+
+.input-div>div {
+  position: relative;
+  height: 45px;
+}
+
+.input-div>div>h5 {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 18px;
+  transition: .3s;
+}
+
+.input-div:before,
+.input-div:after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background-color: #dd99d7;
+  transition: .4s;
+}
+
+.input-div:before {
+  right: 50%;
+}
+
+.input-div:after {
+  left: 50%;
+}
+
+.input-div.focus:before,
+.input-div.focus:after {
+  width: 50%;
+}
+
+.input-div.focus>div>h5 {
+  top: -5px;
+  font-size: 15px;
+}
+
+.input-div.focus>.i>i {
+  color: #dd99d7;
+}
+
+.input-div>div>input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0.5rem 0.7rem;
+  font-size: 1.2rem;
+  color: #555;
+  font-family: 'poppins', sans-serif;
+}
+
+.input-div.two {
+  margin-bottom: 4px;
+}
+
+.three {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.three div {
+  max-width: 150px;
+
+}
+
+.signIn {
+  display: block;
+  width: 80%;
+  height: 50px;
+  padding: 5px;
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  background-image: linear-gradient(to right, #dd99d7, #eb87e6, #e254d6);
+  background-size: 100%;
+  font-size: 1.2rem;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  margin: 1rem 0;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.btn {
+  margin-left: 10px;
+  display: block;
+  width: 40%;
+  height: 50px;
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  background-image: linear-gradient(to right, #e6c1e6, #dfbbdf, #ebceeb);
+  background-size: 200%;
+  font-size: 1.2rem;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  margin: 1rem 0;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.btn:hover {
+  background-position: right;
+}
+
+
+/* footer */
+footer {
+  position: absolute;
+  background: #333;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  /* z-index: 3; */
+}
+
+.fotterNav {
+  background-color: aliceblue;
+  text-align: center;
+}
+
+.fotterNav ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+
+.fotterNav ul li {
+  margin: 0 10px;
+  padding: 0 10px;
+}
+
+#copy {
+  background-color: aliceblue;
+  text-align: center;
+  margin: auto;
+}
+
+/* media */
+@media screen and (max-width: 900px) {
+  #img {
+    display: none;
+  }
+
+  .signIn {
+    margin-left: 30px;
+    height: 60px;
+  }
+
+  .containerM {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  #loginMenu li {
+    width: 300px;
+  }
+
+  .input-div {
+
+    width: 300px;
+
+  }
+
+  .fotterNav ul li {
+    margin: 2px;
+    padding: 2px;
+  }
+}

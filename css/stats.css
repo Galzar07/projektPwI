@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    outline: 0;
+}
+
+a {
+    color: black;
+}
+
+.container-fluid {
+    margin: auto;
+    width: 80%;
+}
+
+div .header {
+    justify-content: space-around;
+    width: 80%;
+    position: fixed;
+    border-bottom: 1px solid gray;
+    z-index: 1;
+    background-color: aliceblue;
+}
+
+#homeMenu {
+    display: flex;
+    /* justify-content: center; */
+    justify-content: flex-end;
+}
+
+#homeMenu ul {
+    list-style: none;
+    display: flex;
+}
+
+#homeMenu ul li {
+    font-size: 25px;
+    margin: auto 10px;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+    outline: 0;
+}
+
+#homeMenu ul li:hover {
+    color: red;
+}
+
+a:hover {
+    color: red;
+    text-decoration: none;
+}
+
+#inp {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+#inp input {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#inp input:focus {
+    outline: 0;
+}
+
+.header h1 {
+    padding: 5px;
+    text-align: center;
+    font-family: "Trade Winds", cursive;
+    font-size: 36px;
+}
+
+
+
+
+
+
+/* main */
+.infoProf {
+    height: 280px;
+    border-bottom: 1px solid gray;
+}
+
+.profileImg {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.profileImg img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+
+.profilHeader {
+    display: flex;
+    align-items: flex-end;
+
+}
+
+.profilHeader h1 {
+    padding: 0 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.infoAboutProfile {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.infoAboutProfile h1 {
+    font-family: 'Merriweather', serif;
+}
+
+.infoAboutProfile ul {
+    list-style: none;
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.infoAboutProfile ul li {
+    font-family: 'Merriweather', serif;
+    padding: 0 5px;
+}
+
+
+
+#people {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 30px;
+}
+
+#people ul li {
+    list-style: none;
+    margin: 15px 0;
+}
+
+#people ul li i {
+    margin: 0 5px;
+}
+
+#people h3 {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 40px;
+}
+
+#obserwatorzy ul,
+#obserwujacy ul,
+#likes ul {
+    max-height: 500px;
+    overflow: auto;
+}
+
+
+
+
+
+
+
+
+/* footer */
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.fotterNav {
+    background-color: aliceblue;
+    text-align: center;
+}
+
+.fotterNav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin: 0;
+}
+
+.fotterNav ul li {
+    margin: 0 10px;
+    padding: 0 10px;
+}
+
+#copy {
+    background-color: aliceblue;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#copy p {
+    margin: 0;
+}

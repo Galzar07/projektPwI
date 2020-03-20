@@ -1,0 +1,444 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    outline: 0;
+}
+
+a {
+    color: black;
+}
+
+.container-fluid {
+    margin: auto;
+    width: 80%;
+}
+
+div .header {
+    justify-content: space-around;
+    width: 80%;
+    position: fixed;
+    border-bottom: 1px solid gray;
+    z-index: 1;
+    background-color: aliceblue;
+}
+
+#homeMenu {
+    display: flex;
+    /* justify-content: center; */
+    justify-content: flex-end;
+}
+
+#homeMenu ul {
+    list-style: none;
+    display: flex;
+}
+
+#homeMenu ul li {
+    font-size: 25px;
+    margin: auto 10px;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+    outline: 0;
+}
+
+#homeMenu ul li:hover {
+    color: red;
+}
+
+a:hover {
+    color: red;
+    text-decoration: none;
+}
+
+#inp {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+#inp input {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#inp input:focus {
+    outline: 0;
+}
+
+.header h1 {
+    padding: 5px;
+    text-align: center;
+    font-family: "Trade Winds", cursive;
+    font-size: 36px;
+}
+
+#headBtn {
+    display: flex;
+    align-items: center;
+}
+
+
+#headBtn ul {
+    list-style: none;
+    display: flex;
+
+}
+
+#headBtn ul li {
+    padding: 3px;
+    margin: 0 3px;
+}
+
+#headBtn ul li button {
+    box-shadow: 7px 2px 10px -2px #46f2f2;
+    background: linear-gradient(to bottom, #47e6de 5%, #2a9bbd 100%);
+    background-color: #47e6de;
+    border-radius: 22px;
+    border: 6px solid #24878a;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 17px;
+    padding: 5px;
+    text-decoration: none;
+    text-shadow: 3px 1px 0px #244885;
+}
+
+#headBtn ul li button:hover {
+    background: linear-gradient(to bottom, #2a9bbd 5%, #47e6de 100%);
+    background-color: #2a9bbd;
+}
+
+/* srodek */
+.infoProf {
+    height: 280px;
+    border-bottom: 1px solid gray;
+}
+
+.profileImg {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.profileImg img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+
+.profilHeader {
+    display: flex;
+    align-items: center;
+}
+
+.profilHeader h1 {
+    padding: 0 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.profilHeader button {
+    padding: 5px;
+    border-radius: 10px;
+    font-weight: 700;
+    background-color: mediumturquoise;
+    outline: 0;
+}
+
+.infoAboutProfile {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.infoAboutProfile h1 {
+    font-family: 'Merriweather', serif;
+}
+
+.infoAboutProfile ul {
+    list-style: none;
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.infoAboutProfile ul li {
+    font-family: 'Merriweather', serif;
+    padding: 0 5px;
+}
+
+#settings button {
+    padding: 5px;
+    background-color: aqua;
+    font-weight: 300;
+    border-radius: 20%;
+}
+
+#settings .icon {
+    display: none;
+}
+
+
+
+
+
+.galeryImg,
+.przeglad {
+    margin-top: 40px;
+    display: flex;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+
+}
+
+.galeryImg img,
+.przeglad IMG {
+    cursor: pointer;
+    width: 80%;
+    height: 100%;
+    transition: opacity ease-out 250ms;
+    padding: 2px;
+
+}
+
+.galeryImg .post,
+.przeglad .post {
+    position: relative;
+}
+
+.post:hover {
+    cursor: pointer;
+}
+
+.post::before,
+.post::after {
+    content: '';
+    position: absolute;
+    top: 1.25em;
+    bottom: 1.25em;
+    left: 1.25em;
+    right: 1.25em;
+    opacity: 1;
+    transition: transform ease-out 250ms;
+}
+
+.post::before {
+    transform: scale(0, 1);
+}
+
+.post::after {
+    transform: scale(1, 0);
+}
+
+.post:hover::before {
+    transform: scale(1.05, 1);
+}
+
+.post:hover::after {
+    transform: scale(1, 1.05);
+}
+
+.post:hover img {
+    opacity: .3;
+}
+
+.postText {
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: Black;
+    opacity: 0;
+    transition: opacity ease-out 250ms;
+}
+
+.post:hover .postText {
+    opacity: 1;
+}
+
+.galeryImg div,
+.przeglad div {
+    width: 33%;
+    text-align: center;
+    margin: 25px 0;
+}
+
+.komentarze {
+    width: 1000px;
+    display: none;
+}
+
+.post {
+    display: flex;
+    justify-content: center;
+}
+
+.przed {
+    display: flex;
+}
+
+.przed button {
+    margin: 0 2px;
+    padding: 0 3px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    outline: 0;
+}
+
+.post .active {
+    width: 800px;
+    display: none;
+}
+
+.addCom {
+    display: flex;
+}
+
+.addCom .inpText {
+    width: 50px;
+}
+
+
+
+
+#carouselExampleControls {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+}
+
+/* footer */
+footer {
+    position: flex;
+    background-color: aliceblue;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    bottom: 0;
+}
+
+.fotterNav {
+    text-align: center;
+}
+
+.fotterNav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin: 0;
+}
+
+.fotterNav ul li {
+    margin: 0 10px;
+    padding: 0 10px;
+
+}
+
+#copy {
+    text-align: center;
+    margin: auto;
+}
+
+#copy p {
+    margin: 0;
+}
+
+/* media */
+@media screen and (max-width: 900px) {
+
+    .container-fluid {
+        width: 100%;
+    }
+
+    div.header {
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    #inp input {
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .infoAboutProfile {
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+    }
+
+    .infoAboutProfile #stats ul {
+        flex-direction: column;
+    }
+
+    .profilHeader {
+        display: block;
+    }
+
+    .infoAboutProfile #settings ul {
+        display: none;
+    }
+
+    .infoAboutProfile #settings .icon {
+        display: block;
+        margin: 5px;
+        font-size: 20px;
+        outline: 0;
+    }
+
+    footer {
+        font-size: 12px;
+        padding: 0;
+    }
+
+    .fotterNav ul li {
+        margin: 0 5px;
+        padding: 0 5px;
+
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    #inp {
+        display: none;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    .profileImg {
+        align-items: center;
+    }
+
+    .postText {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .header #homeMenu ul {
+        display: none;
+    }
+
+    .postText {
+        font-size: 10px;
+    }
+}

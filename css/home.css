@@ -1,0 +1,411 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+
+  position: relative;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.container-fluid {
+  margin: auto;
+  width: 90%;
+}
+
+
+/* header */
+
+div #header {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  justify-content: space-around;
+  width: 80%;
+  margin: 0 auto;
+  position: fixed;
+  border-bottom: 1px solid gray;
+  z-index: 1;
+  background-color: aliceblue;
+}
+
+#homeMenu {
+  display: flex;
+
+  justify-content: flex-end;
+}
+
+#homeMenu ul {
+  list-style: none;
+  display: flex;
+}
+
+#homeMenu ul li {
+  font-size: 25px;
+  margin: auto 10px;
+  padding: 5px;
+  cursor: pointer;
+  transition: 0.5s;
+  outline: 0;
+}
+
+#homeMenu ul li:hover {
+  color: red;
+}
+
+#inp {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+#inp input {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#inp input:focus {
+  outline: 0;
+}
+
+#header h1 {
+
+  padding: 5px;
+  text-align: center;
+  font-family: "Trade Winds", cursive;
+  font-size: 36px;
+}
+
+
+/* main */
+main {
+
+  display: flex;
+
+  margin: 100px 50px;
+  justify-content: space-around;
+}
+
+#leftSect {
+  display: block;
+
+  justify-content: flex-end;
+  flex-direction: column;
+  flex: 3;
+
+
+
+}
+
+#leftSect .post {
+  border: 1px solid gray;
+  margin: 10px 0;
+}
+
+#leftSect .imgFriends {
+  margin: 10px 0px 0 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+#leftSect .imgFriends img {
+  width: 620px;
+  flex: 2;
+}
+
+#leftSect .imgFriends .comment {
+  flex: 1;
+  margin: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+#leftSect .zdjLog {
+  margin: 10px 0 0 20px;
+}
+
+#leftSect .zdjLog i {
+  margin: 0 5px;
+  padding: 5px;
+
+}
+
+
+
+
+#leftSect .comUsers {
+  overflow: auto;
+  max-height: 400px;
+}
+
+#leftSect .comUsers div {
+  margin: 5px 0;
+  padding: 3px;
+  border: 1px solid black;
+  border-radius: 5px;
+  overflow: hidden;
+
+}
+
+.zdjLog button i {
+  padding: 0;
+}
+
+.zdjLog button {
+  outline: 0;
+  background-color: aliceblue;
+  border-radius: 50%;
+}
+
+.post .addCom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-left: 10px;
+}
+
+.post .addCom input {
+  padding: 5px;
+}
+
+.post .addCom button {
+  padding: 0 5px;
+  border-radius: 20%;
+}
+
+
+
+#rightSect {
+  margin: 20px 40px;
+  width: 200px;
+}
+
+main #profile {
+  margin: 10px;
+  text-align: center;
+}
+
+main #profile i {
+  padding: 5px;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+main #profile span {
+  font-size: 25px;
+}
+
+main ul {
+  list-style: none;
+  margin: 5px;
+}
+
+#friends {
+  border: 2px solid bisque;
+  padding: 5px;
+  border-radius: 20%;
+}
+
+
+#listFriends li {
+  margin: 10px;
+  height: 50px;
+  overflow: hidden;
+
+}
+
+#listFriends li i {
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 1580px) {
+  #leftSect .comUsers {
+
+    max-height: 300px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .container-fluid {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1255px) {
+  main {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  #leftSect .comUsers {
+
+    max-height: 220px;
+  }
+
+  #rightSect {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  #friends ul {
+    display: flex;
+
+  }
+
+  #friends ul li {
+    margin: 0 20px;
+    width: 150px;
+
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #leftSect .imgFriends {
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+  }
+
+  #leftSect .post {
+    height: 750px;
+  }
+
+  #leftSect .comUsers {
+
+    max-height: 180px;
+  }
+
+  .comment {
+    position: relative;
+    flex: 2;
+  }
+
+  .post .addCom {
+    position: absolute;
+    bottom: 0;
+  }
+
+  #leftSect .imgFriends img {
+    display: flex;
+    margin: 0 auto;
+    flex: 2;
+  }
+
+  #leftSect .imgFriends h2 {
+    display: none;
+  }
+
+
+}
+
+@media screen and (max-width: 880px) {
+  #leftSect .imgFriends img {
+    width: 500px;
+  }
+
+  #inp input {
+    width: 150px;
+  }
+
+  #header h1 {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+
+  #leftSect {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+  }
+
+
+  #profile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #inp input {
+    display: none;
+  }
+
+  #rightSect #friends ul li {
+    margin: 2px;
+  }
+
+  #leftSect .imgFriends img {}
+}
+
+@media screen and (max-width: 520px) {
+  #leftSect {
+    width: 100%;
+  }
+
+  #leftSect .imgFriends img {
+    width: 450px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #friends {
+    width: 400px;
+  }
+
+  #leftSect .imgFriends img {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #friends {
+    width: 350px;
+  }
+
+  #leftSect .imgFriends img {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  #header #homeMenu li {
+    font-size: 20px;
+    margin: 2px;
+  }
+
+  #friends {
+    width: 300px;
+  }
+
+  #leftSect .imgFriends img {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+
+
+  #friends {
+    width: 280px;
+  }
+
+  #leftSect .imgFriends img {
+    width: 280px;
+  }
+}
