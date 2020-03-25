@@ -3,8 +3,9 @@ const spanPost = document.querySelector('#postNumber');
 spanPost.textContent = posts.length;
 document.querySelector('#copy p').textContent = `Copyright © ${new Date().getFullYear()}`;
 
-// po wcisnieciu zdjecia na profilu otworzy sie galeria zdj z dodawaniem komentarzy
 
+
+// po wcisnieciu zdjecia na profilu otworzy sie galeria zdj z dodawaniem komentarzy
 // const postText = document.querySelectorAll('.postText');
 // const listCom = [...document.querySelectorAll('.komentarze')];
 // let flag = false;

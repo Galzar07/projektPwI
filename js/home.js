@@ -1,6 +1,6 @@
 const coments = document.querySelectorAll('.comUsers div');
 
-function coloring() {
+function color() {
     coments.forEach((com, index) => {
         if (index % 2 == 0)
             com.style.backgroundColor = '#e6ffff';
@@ -10,4 +10,4 @@ function coloring() {
     })
 }
 
-coloring();
+color();
