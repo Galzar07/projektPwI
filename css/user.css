@@ -1,6 +1,13 @@
 * {
     margin: 0;
     padding: 0;
+
+}
+
+html,
+body {
+    height: 100vh;
+
 }
 
 button {
@@ -320,15 +327,14 @@ a:hover {
 
 /* footer */
 footer {
-
-    background-color: aliceblue;
-    width: 100%;
-    text-align: center;
-    padding: 5px;
+    position: absolute;
     bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .fotterNav {
+    background-color: aliceblue;
     text-align: center;
 }
 
@@ -342,12 +348,12 @@ footer {
 .fotterNav ul li {
     margin: 0 10px;
     padding: 0 10px;
-
 }
 
 #copy {
+    background-color: aliceblue;
     text-align: center;
-    margin: auto;
+    margin: 0 auto;
 }
 
 #copy p {
@@ -389,16 +395,7 @@ footer {
         display: block;
     }
 
-    .infoAboutProfile #settings ul {
-        display: none;
-    }
 
-    .infoAboutProfile #settings .icon {
-        display: block;
-        margin: 5px;
-        font-size: 20px;
-        outline: 0;
-    }
 
     footer {
         font-size: 12px;

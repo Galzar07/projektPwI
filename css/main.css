@@ -25,6 +25,7 @@ body {
   color: rgb(225, 48, 108);
 }
 
+
 /* section */
 main {
   display: flex;
@@ -233,6 +234,12 @@ form {
   background-position: right;
 }
 
+.err {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  color: red;
+}
 
 /* footer */
 footer {

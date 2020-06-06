@@ -1,3 +1,31 @@
+<?php
+
+session_start();
+
+$baza = new PDO('mysql:host=localhost; dbname=id13973227_instaton', 'id13973227_projekt_instaton', '6AP8z%pvk)w_%x_|');
+
+if (isset($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $password_hash = hash('sha224', $password);
+    $zapytanie = $baza->prepare('SELECT COUNT("id_user") FROM users WHERE username = "' . $username . '" AND password = "' . $password_hash . '"');
+
+    $zapytanie->execute();
+    $count = $zapytanie->fetchColumn();
+    if ($count == "1") {
+        $_SESSION['username'] = $username;
+
+
+        header('location: home.php');
+    } else {
+        $message = '<label>Username OR Password is wrong</label>';
+    }
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,16 +57,21 @@
 
             <div id="loginMenu">
                 <ul>
+                    <?php
+                    if (isset($message)) {
+                        echo '<li class="err">' . $message . '</li>';
+                    }
+                    ?>
                     <li><button class="signIn">Zaloguj się</button>
                         <div class="loginContent">
-                            <form>
+                            <form method="post">
                                 <div class="input-div one">
                                     <div class="i">
                                         <i class="fas fa-user"></i>
                                     </div>
                                     <div class="div">
                                         <h5>Username</h5>
-                                        <input type="text" class="input">
+                                        <input type="text" name="username" class="input">
                                     </div>
                                 </div>
                                 <div class="input-div two">
@@ -47,12 +80,13 @@
                                     </div>
                                     <div class="div">
                                         <h5>Password</h5>
-                                        <input type="password" class="input">
+                                        <input type="password" name="password" class="input">
                                     </div>
                                 </div>
                                 <div class="three">
-                                    <input type="submit" class="btn" value="Zaloguje sie">
-                                    <div>Nie masz konta?! <a href="register.html">Zarejestruj sie!</a></div>
+                                    <input type="submit" name="login" class="btn" value="Zaloguje sie">
+
+                                    <div>Nie masz konta?! <a href="register.php">Zarejestruj sie!</a></div>
                                 </div>
                             </form>
                         </div>

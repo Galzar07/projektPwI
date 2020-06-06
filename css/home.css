@@ -86,43 +86,35 @@ div #header {
 
 /* main */
 main {
-
   display: flex;
-
   margin: 100px 50px;
   justify-content: space-around;
 }
 
 #leftSect {
-  display: block;
-
+  width: 50%;
   justify-content: flex-end;
   flex-direction: column;
-  flex: 3;
-
-
 
 }
 
 #leftSect .post {
   border: 1px solid gray;
   margin: 10px 0;
+
 }
 
 #leftSect .imgFriends {
-  margin: 10px 0px 0 0px;
-  display: flex;
-  justify-content: space-between;
+  margin: 10px 0 0 0;
 }
 
 
 #leftSect .imgFriends img {
-  width: 620px;
-  flex: 2;
+  width: 100%;
 }
 
 #leftSect .imgFriends .comment {
-  flex: 1;
+
   margin: 10px;
   position: relative;
   display: flex;
@@ -131,6 +123,8 @@ main {
 
 #leftSect .zdjLog {
   margin: 10px 0 0 20px;
+  display: flex;
+  flex-direction: row;
 }
 
 #leftSect .zdjLog i {
@@ -138,8 +132,6 @@ main {
   padding: 5px;
 
 }
-
-
 
 
 #leftSect .comUsers {
@@ -186,7 +178,7 @@ main {
 
 #rightSect {
   margin: 20px 40px;
-  width: 200px;
+  width: 33%;
 }
 
 main #profile {
@@ -231,7 +223,6 @@ main ul {
 
 @media screen and (max-width: 1580px) {
   #leftSect .comUsers {
-
     max-height: 300px;
   }
 }
@@ -243,21 +234,10 @@ main ul {
 }
 
 @media screen and (max-width: 1255px) {
-  main {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-  }
+
 
   #leftSect .comUsers {
-
     max-height: 220px;
-  }
-
-  #rightSect {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
   }
 
   #friends ul {
@@ -273,48 +253,21 @@ main ul {
 }
 
 @media screen and (max-width: 1000px) {
-  #leftSect .imgFriends {
-    display: flex;
-    flex-direction: column;
-    height: 700px;
-  }
-
-  #leftSect .post {
-    height: 750px;
-  }
-
-  #leftSect .comUsers {
-
-    max-height: 180px;
-  }
-
-  .comment {
-    position: relative;
-    flex: 2;
-  }
-
-  .post .addCom {
-    position: absolute;
-    bottom: 0;
-  }
 
   #leftSect .imgFriends img {
     display: flex;
     margin: 0 auto;
-    flex: 2;
+
   }
 
   #leftSect .imgFriends h2 {
     display: none;
   }
 
-
 }
 
 @media screen and (max-width: 880px) {
-  #leftSect .imgFriends img {
-    width: 500px;
-  }
+
 
   #inp input {
     width: 150px;
@@ -327,17 +280,21 @@ main ul {
   }
 }
 
-@media screen and (max-width: 720px) {
-
-  #leftSect {
-    display: flex;
-    justify-content: center;
-    width: 100vw;
+@media screen and (max-width: 650px) {
+  #rightSect {
+    margin: 0;
   }
 
-
   #profile {
-    display: none;
+    margin: 0;
+  }
+
+  #profile h2 {
+    font-size: 22px;
+  }
+
+  .comUsers div .nickName {
+    font-size: 16px;
   }
 }
 
@@ -349,8 +306,6 @@ main ul {
   #rightSect #friends ul li {
     margin: 2px;
   }
-
-  #leftSect .imgFriends img {}
 }
 
 @media screen and (max-width: 520px) {
@@ -361,6 +316,11 @@ main ul {
   #leftSect .imgFriends img {
     width: 450px;
   }
+
+  #rightSect {
+    width: 100%;
+  }
+
 }
 
 @media screen and (max-width: 450px) {
