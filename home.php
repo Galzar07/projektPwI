@@ -8,7 +8,11 @@ $id_user = $id_user->fetchAll(PDO::FETCH_ASSOC)[0]['id_user'];
 
 if (isset($_POST['btn'])) {
     $komentarz = $_POST['komentarz'];
-    $zapytanie = $baza->prepare('INSERT INTO komentarze (id_kom,id_user,tresc) VALUES ("' . NULL . '","' . $id_user . '","' . $komentarz . '")');
+
+    $wynik = $baza->query("SELECT MAX(id_kom) FROM komentarze");
+    $wynik = $wynik->fetchAll(PDO::FETCH_ASSOC)[0]['MAX(id_kom)'];
+    $wynik += 1;
+    $zapytanie = $baza->prepare('INSERT INTO komentarze (id_kom,id_user,tresc) VALUES ("' . $wynik . '","' . $id_user . '","' . $komentarz . '")');
     $zapytanie->execute();
 }
 

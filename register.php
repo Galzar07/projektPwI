@@ -67,7 +67,7 @@ if (isset($_POST['register'])) {
 
 
         $zapytanie = $baza->prepare('INSERT INTO users (id_user,email,username,password,id_konto) 
-        VALUES ("' . NULL . '","' . $email . '","' . $username . '","' . $password_hash . '", "' . $wynik . '")');
+        VALUES ("' . $wynik . '","' . $email . '","' . $username . '","' . $password_hash . '", "' . $wynik . '")');
         $zapytanie->execute();
         header('Location: index.php');
     }
