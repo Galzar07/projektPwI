@@ -2,9 +2,9 @@
 
 session_start();
 
-// $baza = new PDO('mysql:host=localhost; dbname=id13973227_instaton', 'id13973227_projekt_instaton', '6AP8z%pvk)w_%x_|');
+$baza = new PDO('mysql:host=localhost; dbname=id13973227_instaton', 'id13973227_projekt_instaton', '6AP8z%pvk)w_%x_|');
 
-$baza = new PDO('mysql:host=localhost; dbname=instaton', 'root', '');
+
 
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
