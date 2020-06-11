@@ -3,19 +3,6 @@
 session_start();
 // $baza = new PDO('mysql:host=localhost; dbname=id13973227_instaton', 'id13973227_projekt_instaton', '6AP8z%pvk)w_%x_|');
 $baza = new PDO('mysql:host=localhost; dbname=instaton', 'root', '');
-$username = $_SESSION['username'];
-$id_user = $baza->query('SELECT id_user FROM users WHERE username = "' . $username . '"');
-$id_user = $id_user->fetchAll(PDO::FETCH_ASSOC)[0]['id_user'];
-
-//dodawanie komentarza
-if (isset($_POST['btn'])) {
-    $komentarz = $_POST['komentarz'];
-    $wynik = $baza->query("SELECT MAX(id_kom) FROM komentarze");
-    $wynik = $wynik->fetchAll(PDO::FETCH_ASSOC)[0]['MAX(id_kom)'];
-    $wynik += 1;
-    $zapytanie = $baza->prepare('INSERT INTO komentarze (id_kom,id_user,tresc,nr_postu) VALUES ("' . $wynik . '","' . $id_user . '","' . $komentarz . '","' . $_POST['custId'] . '")');
-    $zapytanie->execute();
-}
 
 
 if (isset($_POST['usunKom'])) {
@@ -52,9 +39,7 @@ if (isset($_POST['usunKom'])) {
             <div id="header" class="row">
 
                 <div class="log col-4">
-                    <a href="home.php">
-                        <h1 class='log'> InstaTon</h1>
-                    </a>
+                    <h1 class='log'> InstaTon</h1>
                 </div>
 
                 <div id='inp' class="col-4">
@@ -62,12 +47,10 @@ if (isset($_POST['usunKom'])) {
                         <input type="text" class='wyszukiwarka' placeholder="Szukaj" name="wyszukiwarka">
                     </form>
                 </div>
-
                 <div id='homeMenu' class="col-4">
                     <ul>
-                        <li><a href="home.php"><i class="fas fa-home"></i></a></li>
-                        <li><a href="Stats.php"><i class="fas fa-hand-holding-heart"></i></a></li>
-                        <li><a href="user.php"><i class="fas fa-user"></i></a></li>
+
+                        <li><a href="wyloguj.php"><i class="fas fa-sign-out-alt"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -79,41 +62,29 @@ if (isset($_POST['usunKom'])) {
                 <?php
                 $baza = new PDO('mysql:host=localhost; dbname=instaton', 'root', '');
                 $wypiszPosty = $baza->query("SELECT zdjecie,username,id_user,nr_postu FROM galeria INNER JOIN users ON galeria.id = users.id_user ORDER BY nr_postu DESC");
-
                 foreach ($wypiszPosty as $row) {
                     $nrpostu = $row['nr_postu'];
                     echo '<div class="post">
                                 <div class="zdjLog ">
-                                    <form method="GET" action="like.php">
-                                    <i class="fas fa-user"></i><span class="nickName">' . $row['username'] . ' </span><button name="serce"><i class="far fa-heart"></i></button>
+                                    <form method="GET" action="usunadmin.php">
+                                    <i class="fas fa-user"></i><span class="nickName">' . $row['username'] . ' </span>
+                                    <button type="submit" name="nr_postu"><i class="fas fa-trash"></i></button>
                                     <input type="hidden" id="nr_postu" name="nr_postu" value="' . $row['nr_postu'] . '">
                                     </form>
                                 </div>
                                 <div class="imgFriends " >
                                     <img src="' . $row['zdjecie'] . '" alt="">
                                     <div class="comUsers">';
-
                     $com = $baza->query("SELECT users.username,komentarze.tresc,komentarze.nr_postu,komentarze.id_kom FROM users,komentarze WHERE users.id_user = komentarze.id_user AND komentarze.nr_postu = $nrpostu");
-
                     foreach ($com as $i) {
-                        if ($i['username'] == $username) {
-                            echo '<div><span> ' . $i['username'] . ': </span> ' . $i['tresc'] . ' 
+                        echo '<div><span> ' . $i['username'] . ': </span> ' . $i['tresc'] . ' 
                                             <form method="post">
                                                 <button type="submit" name="usunKom"><i class="fas fa-trash"></i></button>
                                                 <input type="hidden" id="usid" name="usid" value="' . $i['id_kom'] . '">
                                         </form>
                                             </div>';
-                        } else {
-                            echo '<div><span> ' . $i['username'] . ': </span> ' . $i['tresc'] . ' 
-                                            </div>';
-                        }
                     }
-                    echo        '<form method="post">
-                                            <input type="text" name="komentarz" placeholder="Dodaj Komentarz">
-                                            <input type="submit" name="btn" value="->" />
-                                            <input type="hidden" id="custId" name="custId" value="' . $nrpostu . '">
-                                        </form>
-                                    </div>
+                    echo           '</div>
                                 </div>
                             </div>';
                 }

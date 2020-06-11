@@ -1,7 +1,8 @@
 <?php
 
 session_start();
-$baza = new PDO('mysql:host=localhost; dbname=id13973227_instaton', 'id13973227_projekt_instaton', '6AP8z%pvk)w_%x_|');
+// $baza = new PDO('mysql:host=localhost; dbname=id13973227_instaton', 'id13973227_projekt_instaton', '6AP8z%pvk)w_%x_|');
+$baza = new PDO('mysql:host=localhost; dbname=instaton', 'root', '');
 $username = $_SESSION['username'];
 $id = $baza->query('SELECT id_user FROM users WHERE username="' . $username . '"');
 $id = $id->fetchAll(PDO::FETCH_ASSOC)[0]['id_user'];

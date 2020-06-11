@@ -28,8 +28,8 @@ if (isset($_POST['register'])) {
     }
 
     $password_hash = hash('sha224', $password);
-    $baza = new PDO('mysql:host=localhost; dbname=id13973227_instaton', 'id13973227_projekt_instaton', '6AP8z%pvk)w_%x_|');
-
+    // $baza = new PDO('mysql:host=localhost; dbname=id13973227_instaton', 'id13973227_projekt_instaton', '6AP8z%pvk)w_%x_|');
+    $baza = new PDO('mysql:host=localhost; dbname=instaton', 'root', '');
     $rezultat = $baza->query("SELECT id_user FROM users WHERE email='$email'");
 
     if (!$rezultat) throw new Exception($baza->error);
@@ -54,7 +54,7 @@ if (isset($_POST['register'])) {
 
     if ($ok == true) {
 
-        $baza = new PDO('mysql:host=localhost; dbname=id13973227_instaton', 'id13973227_projekt_instaton', '6AP8z%pvk)w_%x_|');
+        // $baza = new PDO('mysql:host=localhost; dbname=id13973227_instaton', 'id13973227_projekt_instaton', '6AP8z%pvk)w_%x_|');
 
         $wynik = $baza->query("SELECT MAX(id_user) FROM users");
         $wynik = $wynik->fetchAll(PDO::FETCH_ASSOC)[0]['MAX(id_user)'];

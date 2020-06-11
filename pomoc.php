@@ -1,6 +1,12 @@
 <?php
+session_start();
+if (isset($_POST['pomoc'])) {
+    $username = $_POST['username'];
+    $temat = $_POST['temat'];
+    $problem = $_POST['problem'];
 
-
+    $message = 'Dzieki' . $username . ' za wiadomosc postaramy sie odpowiedziec jak najszybciej';
+}
 
 ?>
 <!DOCTYPE html>
@@ -47,14 +53,24 @@
             <div class="kontakt">
                 <h3>KONTAKT</h3>
                 <form>
-                    Temat: <input type="text">
+                    Temat: <input name='temat' type="text">
                     <br>
-                    Twój nick: <input type='text'>
+                    Twój nick: <input name='username' type='text'>
                     <br>
                     problem:
                     <br>
-                    <textarea name="" id="" cols="50" rows="10"></textarea>
+                    <textarea name="problem" id="" cols="50" rows="10"></textarea>
+                    <br>
+                    <input type="submit" name='pomoc' value="wyślij">
                 </form>
+            </div>
+
+            <div>
+                <?php
+                if (isset($message)) {
+                    echo '<span>' . $message . '</span>';
+                }
+                ?>
             </div>
         </main>
 

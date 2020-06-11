@@ -166,6 +166,10 @@ main {
     font-size: 40px;
 }
 
+section {
+    display: flex;
+    flex-direction: row-reverse;
+}
 
 /* footer */
 footer {

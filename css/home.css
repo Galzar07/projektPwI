@@ -105,6 +105,7 @@ main {
 }
 
 #leftSect .imgFriends {
+
   margin: 10px 0 0 0;
 }
 
@@ -154,7 +155,7 @@ main {
 
 .zdjLog button {
   outline: 0;
-  background-color: aliceblue;
+
   border-radius: 50%;
 }
 
@@ -176,50 +177,15 @@ main {
 
 
 
-#rightSect {
-  margin: 20px 40px;
-  width: 33%;
-}
 
-main #profile {
-  margin: 10px;
-  text-align: center;
-}
-
-main #profile i {
-  padding: 5px;
-  border-radius: 50%;
-  border: 1px solid black;
-}
-
-main #profile span {
-  font-size: 25px;
-}
-
-main ul {
-  list-style: none;
-  margin: 5px;
-}
-
-#friends {
-  border: 2px solid bisque;
-  padding: 5px;
-  border-radius: 20%;
+.czerSerce {
+  background-color: #ff2801;
 }
 
 
-#listFriends li {
-  margin: 10px;
-  height: 50px;
-  overflow: hidden;
 
-}
 
-#listFriends li i {
-  border: 1px solid black;
-  padding: 5px;
-  border-radius: 50%;
-}
+/* media */
 
 @media screen and (max-width: 1580px) {
   #leftSect .comUsers {

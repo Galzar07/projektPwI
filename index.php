@@ -2,7 +2,9 @@
 
 session_start();
 
-$baza = new PDO('mysql:host=localhost; dbname=id13973227_instaton', 'id13973227_projekt_instaton', '6AP8z%pvk)w_%x_|');
+// $baza = new PDO('mysql:host=localhost; dbname=id13973227_instaton', 'id13973227_projekt_instaton', '6AP8z%pvk)w_%x_|');
+
+$baza = new PDO('mysql:host=localhost; dbname=instaton', 'root', '');
 
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
@@ -21,6 +23,25 @@ if (isset($_POST['login'])) {
         $message = '<label>Username OR Password is wrong</label>';
     }
 }
+
+if (isset($_POST['adminlogin'])) {
+    $ausername = $_POST['ausername'];
+    $apassword = $_POST['apassword'];
+    $apassword_hash = hash('sha224', $apassword);
+    $zapytanie1 = $baza->prepare('SELECT COUNT("id_admin") FROM admins WHERE adminname = "' . $ausername . '" AND password = "' . $apassword_hash . '"');
+
+    $zapytanie1->execute();
+
+    $count = $zapytanie1->fetchColumn();
+    if ($count == "1") {
+        $_SESSION['ausername'] = $ausername;
+        header('location: admin.php');
+    } else {
+        $message = '<label>Username OR Password is wrong</label>';
+    }
+}
+
+
 ?>
 
 
@@ -94,14 +115,14 @@ if (isset($_POST['login'])) {
                     <li>
                         <button class="signIn">Zaloguj się jako Administrator</button>
                         <div class="loginContent">
-                            <form>
+                            <form method="post">
                                 <div class="input-div two">
                                     <div class="i">
                                         <i class="fas fa-user"></i>
                                     </div>
                                     <div class="div">
                                         <h5>Username</h5>
-                                        <input type="text" class="input">
+                                        <input type="text" name="ausername" class="input">
                                     </div>
                                 </div>
                                 <div class="input-div two">
@@ -110,10 +131,10 @@ if (isset($_POST['login'])) {
                                     </div>
                                     <div class="div">
                                         <h5>Password</h5>
-                                        <input type="password" class="input">
+                                        <input type="password" name="apassword" class="input">
                                     </div>
                                 </div>
-                                <input type="submit" class="btn" value="Zaloguje sie">
+                                <input type="submit" class="btn" name="adminlogin" value="Zaloguje sie">
                             </form>
                         </div>
                     </li>

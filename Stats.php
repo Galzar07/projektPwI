@@ -2,7 +2,8 @@
 
 session_start();
 
-$baza = new PDO('mysql:host=localhost; dbname=id13973227_instaton', 'id13973227_projekt_instaton', '6AP8z%pvk)w_%x_|');
+// $baza = new PDO('mysql:host=localhost; dbname=id13973227_instaton', 'id13973227_projekt_instaton', '6AP8z%pvk)w_%x_|');
+$baza = new PDO('mysql:host=localhost; dbname=instaton', 'root', '');
 $username = $_SESSION['username'];
 $id = $baza->query('SELECT id_user FROM users WHERE username="' . $username . '"');
 $id = $id->fetchAll(PDO::FETCH_ASSOC)[0]['id_user'];
@@ -25,8 +26,10 @@ if (isset($_POST['dodajZdjecie'])) {
     $noweZdjecie = $_POST['zdjecie'];
 
     if (!(strlen($noweZdjecie) == 0)) {
-
-        $zdj = $baza->prepare('INSERT INTO galeria(id, zdjecie, polubienia) VALUES ("' . $id . '", "' . $noweZdjecie . '" ,0)');
+        $wynik = $baza->query("SELECT MAX(nr_postu) FROM galeria");
+        $wynik = $wynik->fetchAll(PDO::FETCH_ASSOC)[0]['MAX(nr_postu)'];
+        $wynik += 1;
+        $zdj = $baza->prepare('INSERT INTO galeria(id, zdjecie, polubienia,data_dodania,nr_postu) VALUES ("' . $id . '", "' . $noweZdjecie . '" ,0,CURDATE(),' . $wynik . ')');
         $zdj->execute();
     }
 }
@@ -38,7 +41,25 @@ foreach ($zdjdolikow as $i) {
 }
 $iloscpostow = $baza->query("SELECT COUNT(id) FROM galeria WHERE id=$id");
 $iloscpostow = $iloscpostow->fetchAll(PDO::FETCH_ASSOC)[0]['COUNT(id)'];
-$srednia = $liczbalikow / $iloscpostow;
+if ($iloscpostow == 0) {
+    $srednia = 0;
+} else {
+    $srednia = $liczbalikow / $iloscpostow;
+}
+
+if (isset($_POST['zmienhaslo'])) {
+    $haslo1 = hash('sha224', $_POST['haslo1']);
+    $haslo2 = hash('sha224', $_POST['haslo2']);
+    if ($haslo1 == $haslo2) {
+        $queryed = $baza->prepare('UPDATE users 
+                SET "password" = "' . $haslo1 . '"
+                WHERE id_user =' . $id . '');
+
+        $queryed->execute();
+        header('location: user.php');
+    }
+}
+
 
 
 ?>
@@ -113,38 +134,69 @@ $srednia = $liczbalikow / $iloscpostow;
 
                         <div id='stats'>
                             <?php
-                            echo 'Data dołaczenia: ' . $dataDol;
+                            echo 'Data dołaczenia: ' . $dataDol . "<br>";
+                            echo "Liczba Lików całego profilu " . $liczbalikow . "<br>";
+
+                            echo "Średnia liczba lików na zdjecie " . $srednia;
                             ?>
                         </div>
                     </div>
                 </div>
 
+                <section>
+                    <div class="AddBTN">
+                        <form method="POST">
+                            Podaj link: <input type="text" class="inpform" name="zdjecie">
+                            <input type="submit" name='dodajZdjecie' class="przyciskformularz" value="dodaj zdjecie">
 
-                <div class="AddBTN">
-                    <form method="POST">
-                        Podaj link: <input type="text" class="inpform" name="zdjecie">
-                        <input type="submit" name='dodajZdjecie' class="przyciskformularz" value="dodaj zdjecie">
+                        </form>
+                        <form method="POST">
+                            Podaj link: <input type="text" class="inpform" name="profilowe">
+                            <input type="submit" name='zmienProfilowe' class="przyciskformularz" value="zmien profilowe">
 
-                    </form>
-                    <form method="POST">
-                        Podaj link: <input type="text" class="inpform" name="profilowe">
-                        <input type="submit" name='zmienProfilowe' class="przyciskformularz" value="zmien profilowe">
-
-                    </form>
-                </div>
-
-                <div id="people">
-                    <div class="statystyki">
-                        <h3>STATYSTYKI</h3>
-                        <?php
-                        echo "Liczba Lików całego profilu " . $liczbalikow . "<br>";
-
-                        echo "Średnia liczba lików na zdjecie " . $srednia;
-                        ?>
+                        </form>
                     </div>
-                </div>
-            </div>
 
+                    <div class="AddBTN">
+                        <h5>zmien hasło</h5>
+                        <form method="POST">
+                            haslo1: <input type="password" class="inpform" name="haslo1">
+                            <br>
+                            haslo2: <input type="password" class="inpform" name="haslo2">
+                            <br>
+                            <input type="submit" name='zmienhaslo' class="przyciskformularz" value="zmień">
+
+                        </form>
+                        <?php
+
+                        if (isset($haslo1) && $haslo1 != $haslo2) {
+                            echo '<b id = "blad">Spróbuj jeszcze raz!</b>';
+                        }
+
+                        ?>
+
+                    </div>
+
+                    <div class="AddBTN">
+                        <h5>Usun zdjecie</h5>
+                        <form action="usun.php" method="GET">
+                            <label for="zdjecia">Wybierz zddjecie:</label>
+                            <?php
+                            $wypiszGalerie = $baza->query("SELECT * FROM galeria WHERE id=$id");
+                            echo '<select id="zdjecia" name="zdjecia">';
+                            $i =1;
+                            foreach ($wypiszGalerie as $row) {
+                                echo '<option value="'.$row['nr_postu'].'" > Zdjecie nr'.$i.'</option>';
+                                $i++;
+                            }
+                            echo '</select>';
+                            ?>
+
+                            <input type="submit" class="przyciskformularz" value="usun">
+                        </form>
+                    </div>
+            </div>
+            </section>
 
         </main>
 
